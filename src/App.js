@@ -20,6 +20,8 @@ class App extends Component {
     resultMsg = (result) => {
         if (result) {
             this.setState({win: true})
+        } else {
+            this.setState({win: false})
         }
     };
 
@@ -65,8 +67,10 @@ class Field extends Component {
     };
 
     resetGame = () => {
-        this.setState({field: Array(16).fill(0)});
+        this.setState({field: Array(16).fill(0),
+                      matched: null});
         this.randomArr();
+        this.props.winner(false);
     };
 
     showCards = () => {
